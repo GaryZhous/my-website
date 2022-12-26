@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="logo">
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p>Future Engineer</p>
+            <h1>Hi, I'm <span>Gary</span> Sihan Zhou</h1>
+        </div>
+    </div>
+</div>
+<!-- ---------about-------- -->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/user.jpg">
+            </div>
+            <div class="about-col-2"></div>
+                 <h1 class="sub-title">About Me</h1>
+                 <p class="description">It is my great honor to briefly introduce myself. I am a first-year student majoring in Electrical and 
+                    Computer Engineering at the University of Toronto, St. George. As an international student, I am proficient in English and have got a total score of 7.5 in IELTS. Also, as a person fond of doing experiments, I demonstrated strong practical skills gained from doing physics, chemistry, and biology experiments (i.e. circuits construction, catalytic decomposition, and electrophoresis) during club activities in high school as the club leader.
+                </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Python</span><br>Data analysis</li>
+                        <li><span>C</span><br>on arduino and linux</li>
+                        <li><span>Html/CSS</span><br>Website construction</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>Nov 2022 - Present</span><br>IEEE student member</li>
+                        <li><span>Oct 2022 - Present</span><br>Marketing Associate at Association of Chinese Engineers at UofT</li>
+                        <li><span>Jul 2022 - Aug 2022</span><br>internship as quality Inspector at Shenzhen CMY Optimal Precision Electronics CO., Ltd and Dongguan City Topstar Circuits Co., Ltd</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>2022 - 2026</span><br>Bachelor of Electrical and Computer Engineering at University of Toronto</li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- ---------contact-------- --> 
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa fa-paper-plane"></i>  garyzhou1201@gmail.com</p>
+                <p><i class="fa fa-phone"></i>  +1(647)3348163</p>
+                <div class="social-icons">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <a href="https://github.com/GaryZhous"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/Gary__Chow"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/sihan-zhou-4401ab253/"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/garyzhou210/?hl=en"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="text" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <input type="submit" value="submit"/>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Gary Zhou. <i class="fa fa-heart"></i></p>
+    </div>
+</div>
+<script>
+    var tablinks = document.getElementsByClassName("tab-links")
+    var tabcontents = document.getElementsByClassName("tab-contents")
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab")
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxrWSt_xRhvLkpHJvwuAICe3OSs-1BbPohZqc7aYlLHk31YTT7dr3vji2YNeXq3JpgZkw/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            }, 5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+</body>
+</html>
