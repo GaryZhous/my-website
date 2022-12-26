@@ -197,6 +197,36 @@ form input, form textarea{
 .copyright i{
     color: #b54769;
 }
+/* ------css for small screen----- */
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url(images/background2.png);
+
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    .sub-title{
+        font-size: 14px;
+    }
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+}
 #msg{
     color: #61b752;
     margin-top: -40px;
