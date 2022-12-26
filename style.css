@@ -227,6 +227,7 @@ form input, form textarea{
     }
     .tab-contents{
         margin-left: -350px;
+        font-size: 16px;
     }
     .tab-links{
         font-size: 16px;
