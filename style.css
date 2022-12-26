@@ -222,6 +222,12 @@ form input, form textarea{
     .about-col-2{
         font-size: 14px;
     }
+    .tab-titles{
+        margin: 20px 0 40px;
+    }
+    .tab-contents{
+        margin-left: -350px;
+    }
     .tab-links{
         font-size: 16px;
         margin-right: 20px;
