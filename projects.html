@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Projects</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(205, 201, 201);
+    margin: 0;
+    padding: 20px;
+    background-image: url('images/background.png'); /* Path to your image */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed;
+}
+
+h1 {
+    color: #828080;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.project {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Center the project box */
+    padding: 0; /* Allows the image to stretch to the edges */
+    margin-bottom: 20px;
+    max-width: 700px; /* Maximum width of the project box */
+    overflow: hidden; /* Ensures content fits within the borders */
+    max-height: 500px; /* Example max-height, adjust as needed */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-image {
+    width: 100%; /* Full width of the container */
+    max-height: 250px; /* Adjust this value to reduce the image's height */
+    object-fit: cover; /* Ensures the image covers the area, might crop */
+    border-radius: 5px 5px 0 0; /* Rounds the top corners */
+}
+
+.project h2, .project p, .project a {
+    padding: 10px 20px; /* Adjusted padding for content */
+}
+
+.project h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.project p {
+    color: #666;
+    overflow: auto; /* Adds scroll to text if it exceeds the available space */
+}
+
+.project a {
+    color: #007bff;
+    text-decoration: none;
+    display: block; /* Makes the link a block element for better control */
+    width: fit-content; /* Adjusts the width to fit its content */
+    margin: 10px auto 10px; /* Centers the link and adds margin for spacing */
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+    gap: 25px; /* Adjusts the space between the boxes */
+    justify-content: center; /* Centers the grid within the container */
+    margin: 0 auto; /* Additionally, centers the container horizontally */
+    max-width: 1300px; /* Adjust this value based on your preference */
+}
+
+.project {
+    /* Adjust the .project styles as needed, without specifying max-width or min-width */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 20px; /* Adds padding inside the project boxes */
+}
+</style>
+<body>
+    <h1>My Projects</h1>
+    <div class="projects-container">
+        <div class="project">
+            <img src="images/othello.png" alt="Project 1 Image" class="project-image">
+            <h2>Othello AI</h2>
+            <p>Othello Human-AI chess game made with QT in C++, utilizing heuristic analysis, minimax, and AB-pruning algorithms</p>
+            <a href="https://github.com/GaryZhous/Othello">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="images/webmap.png" alt="Project 2 Image" class="project-image">
+            <h2>GHG Platform</h2>
+            <p>Online interactive map made using Mapbox.js and D3.js for documenting the greenhouse gass emission and energy consumption across the entire city of Toronto</p>
+            <a href="https://samarqureshii.github.io/GHGplatform/index.html">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="images/RAPID_System.png" alt="Project 3 Image" class="project-image">
+            <h2>PAPID System</h2>
+            <p>A multi-modal device approach to managing remote patient monitoring (RPM) using off the shelf pager hardware with optical AI to synchronize patient care.</p>
+            <a href="https://github.com/GaryZhous/MakeUofT">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="images/geoquester.png" alt="Project 4 Image" class="project-image">
+            <h2>GeoQuester</h2>
+            <p>GIS application made in C++ with GTK libraries. Implementing A* algorithms for path finding</p>
+            <a href="#">In Progress...</a>
+        </div>
+    </div>
+</body>
+</html>
