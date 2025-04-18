@@ -130,10 +130,12 @@ nav ul li a:hover::after{
 .tab-contents ul li{
     list-style: none;
     margin: 10px 350px;
+    font-size: 20px;
 }
+
 .tab-contents ul li span{
     color: #b54769;
-    font-size: 20px;
+    font-size: 25px;
 }
 .tab-contents{
     display: none;
@@ -238,4 +240,64 @@ form input, form textarea{
     color: #61b752;
     margin-top: -40px;
     display: block;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Enables wrapping on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-col-1, .about-col-2 {
+    flex-basis: 48%;
+}
+
+.about-col-1 img {
+    width: 80%;
+    max-width: 300px; /* Prevents it from growing too large on big screens */
+    border-radius: 12px;
+    display: block;
+}
+
+/* For mobile specifically */
+@media (max-width: 768px) {
+    .about-col-1 img {
+        width: 60%;
+        max-width: 200px;
+    }
+}
+
+/* Responsive styles for phones */
+@media (max-width: 768px) {
+    .about-col-1, .about-col-2 {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .tab-titles {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .tab-links {
+        font-size: 16px;
+    }
+
+    .description {
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    .about-col-2 ul li {
+        font-size: 14px;
+    }
+
+    .sub-title {
+        font-size: 24px;
+    }
 }
