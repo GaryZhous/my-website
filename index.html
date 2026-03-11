@@ -2,26 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Gary Zhou | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div id="header">
     <div class="container">
         <nav>
-            <img src="images/logo.png" class="logo">
-            <ul>
+            <img src="images/logo.png" class="logo" alt="Logo">
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
                 <li><a href="#header">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="projects.html">Projects</a></li>
             </ul>
         </nav>
-        <div class="header-text">
+        <div class="header-text fade-in">
             <p>Future Engineer</p>
-            <h1>Hi there, I'm <span>Gary</span> Zhou</h1>
+            <h1>Hi there, I'm <span id="typed-name">Gary</span> Zhou</h1>
         </div>
     </div>
 </div>
@@ -29,105 +35,156 @@
 <div id="about">
     <div class="container">
         <div class="row">
-            <div class="about-col-1">
-                <img src="images/user.jpg">
+            <div class="about-col-1 fade-in">
+                <img src="images/user.jpg" alt="Gary Zhou">
             </div>
-            <div class="about-col-2"></div>
-                 <h1 class="sub-title">About Me</h1>
-                 <p class="description">Hello! I am Gary, a 4th year Computer Engineering major at University of Toronto. With a passion for software engineering (specifically backend development), I am always on the lookout for new challenges and opportunities to push the boundaries of what's possible in software engineering! 
-                </p>
+            <div class="about-col-2 fade-in">
+                <h1 class="sub-title">About Me</h1>
+                <p class="description">Hello! I am Gary, a 4th year Computer Engineering major at University of Toronto. With a passion for software engineering (specifically backend development), I am always on the lookout for new challenges and opportunities to push the boundaries of what's possible in software engineering!</p>
                 <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                    <p class="tab-links active-link" onclick="opentab(event, 'skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab(event, 'experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab(event, 'education')">Education</p>
                 </div>
                 <div class="tab-contents active-tab" id="skills">
                     <ul>
                         <li><span>Python</span><br>Data analysis and Machine Learning</li>
-                        <li><span>C/C++</span><br>embedded system development and GUI Software Design</li>
+                        <li><span>C/C++</span><br>Embedded system development and GUI Software Design</li>
                         <li><span>Java</span><br>Back-end development</li>
                         <li><span>Go</span><br>Distributed system and backend development</li>
-                        <li><span>TypeScript/JavaScript</span><br>Front-end development (React.js) & Back-end development (Node.js)</li>
-                        <li><span>SQL/NoSQL</span><br>database management & data manipulation</li>
+                        <li><span>TypeScript/JavaScript</span><br>Front-end development (React.js) &amp; Back-end development (Node.js)</li>
+                        <li><span>SQL/NoSQL</span><br>Database management &amp; data manipulation</li>
                     </ul>
                 </div>
                 <div class="tab-contents" id="experience">
                     <ul>
-                        <li><span>May 2025 - Aug 2025</span><br>Software Engineer Intern at Block (Square)</li>
-                        <li><span>May 2024 - Aug 2024</span><br>R&D Software Engineer Intern at De Havilland</li>
-                        <li><span>May 2023 - Aug 2023</span><br>Undergrad Researcher focusing on Internet of Things at UofT ECE department</li>
+                        <li><span>May 2025 – Aug 2025</span><br>Software Engineer Intern at Block (Square)</li>
+                        <li><span>May 2024 – Aug 2024</span><br>R&amp;D Software Engineer Intern at De Havilland</li>
+                        <li><span>May 2023 – Aug 2023</span><br>Undergrad Researcher focusing on Internet of Things at UofT ECE department</li>
                     </ul>
                 </div>
                 <div class="tab-contents" id="education">
                     <ul>
-                        <li><span>2022 - 2026</span><br>Bachelor of Applied Science in Computer Engineering at University of Toronto</li>
+                        <li><span>2022 – 2026</span><br>Bachelor of Applied Science in Computer Engineering at University of Toronto</li>
                     </ul>
                 </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- ---------contact-------- --> 
+<!-- ---------contact-------- -->
 <div id="contact">
     <div class="container">
         <div class="row">
-            <div class="contact-left">
+            <div class="contact-left fade-in">
                 <h1 class="sub-title">Contact Me</h1>
-                <p><i class="fa fa-paper-plane"></i>  garyzhou1201@gmail-dot-com</p>
+                <p><i class="fa fa-paper-plane"></i> garyzhou1201@gmail-dot-com</p>
                 <div class="social-icons">
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                    <a href="https://github.com/GaryZhous"><i class="fa fa-github"></i></a>
-                    <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/in/sihan-zhou-4401ab253/"><i class="fa fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram"></i></a>
+                    <a href="https://github.com/GaryZhous" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/sihan-zhou-4401ab253/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/?hl=en" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="contact-right">
+            <div class="contact-right fade-in">
                 <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="text" name="Email" placeholder="Your Email" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <input type="submit" value="submit"/>
+                    <button type="submit" class="btn">Send Message <i class="fa fa-paper-plane"></i></button>
                 </form>
                 <span id="msg"></span>
             </div>
         </div>
     </div>
     <div class="copyright">
-        <p>Copyright © Gary Zhou. <i class="fa fa-heart"></i></p>
+        <p>Copyright &copy; Gary Zhou. <i class="fa fa-heart"></i></p>
     </div>
 </div>
+
 <script>
-    var tablinks = document.getElementsByClassName("tab-links")
-    var tabcontents = document.getElementsByClassName("tab-contents")
-    function opentab(tabname){
-        for(tablink of tablinks){
+    // Tab switching
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    function opentab(e, tabname) {
+        for (var tablink of tablinks) {
             tablink.classList.remove("active-link");
         }
-        for(tabcontent of tabcontents){
+        for (var tabcontent of tabcontents) {
             tabcontent.classList.remove("active-tab");
         }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab")
+        e.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
     }
+
+    // Hamburger menu toggle
+    var hamburger = document.getElementById("hamburger");
+    var navMenu = document.getElementById("nav-menu");
+    hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("open");
+        navMenu.classList.toggle("open");
+    });
+    hamburger.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            hamburger.classList.toggle("open");
+            navMenu.classList.toggle("open");
+        }
+    });
+    // Close menu when a nav link is clicked
+    navMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            hamburger.classList.remove("open");
+            navMenu.classList.remove("open");
+        });
+    });
+
+    // Scroll reveal animations
+    var faders = document.querySelectorAll(".fade-in");
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    faders.forEach(function (el) { observer.observe(el); });
+
+    // Typing cursor effect on hero name
+    (function () {
+        var el = document.getElementById("typed-name");
+        var text = el.textContent;
+        el.textContent = "";
+        el.style.borderRight = "3px solid #ff004f";
+        var i = 0;
+        function type() {
+            if (i < text.length) {
+                el.textContent += text.charAt(i++);
+                setTimeout(type, 120);
+            } else {
+                setTimeout(function () { el.style.borderRight = "none"; }, 800);
+            }
+        }
+        setTimeout(type, 600);
+    })();
 </script>
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxrWSt_xRhvLkpHJvwuAICe3OSs-1BbPohZqc7aYlLHk31YTT7dr3vji2YNeXq3JpgZkw/exec'
     const form = document.forms['submit-to-google-sheet']
     const msg = document.getElementById("msg")
-  
+
     form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            msg.innerHTML = "Message Sent!"
-            setTimeout(function(){
-                msg.innerHTML = ""
-            }, 5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                msg.innerHTML = "Message Sent! ✓"
+                setTimeout(function () { msg.innerHTML = "" }, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
     })
-  </script>
+</script>
 </body>
 </html>
 
