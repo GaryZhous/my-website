@@ -1,168 +1,332 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Projects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gary Zhou | Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: #080808;
+            color: #fff;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* ---- Nav ---- */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+            background: rgba(8, 8, 8, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .logo {
+            width: 120px;
+            cursor: pointer;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        nav ul li { margin: 0 18px; }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.4s;
+        }
+        nav ul li a:hover::after { width: 100%; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: all 0.35s ease;
+        }
+        .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* ---- Page header ---- */
+        .page-header {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+        .page-header h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .page-header h1 span { color: #ff004f; }
+        .page-header p {
+            color: #ababab;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* ---- Grid ---- */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 5% 80px;
+        }
+
+        /* ---- Project card ---- */
+        .project {
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(255, 0, 79, 0.18);
+            border-color: #ff004f55;
+        }
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        .project:hover .project-image { opacity: 0.9; }
+
+        .project-body {
+            padding: 20px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .project-body h2 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .project-body p {
+            color: #ababab;
+            font-size: 14px;
+            line-height: 1.7;
+            flex: 1;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            padding: 9px 20px;
+            background: #ff004f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            width: fit-content;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .project-link:hover {
+            background: #cc003f;
+            transform: scale(1.03);
+        }
+
+        /* ---- Footer ---- */
+        .footer {
+            text-align: center;
+            padding: 22px 0;
+            background: #111;
+            color: #ababab;
+            font-size: 14px;
+            border-top: 1px solid #1a1a1a;
+        }
+        .footer i { color: #b54769; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .hamburger { display: flex; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(8, 8, 8, 0.97);
+                padding: 15px 0;
+                border-radius: 8px;
+                border-top: 2px solid #ff004f;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+            nav ul.open { display: flex; }
+            nav ul li { margin: 10px 20px; }
+            .page-header h1 { font-size: 36px; }
+            .projects-container {
+                grid-template-columns: 1fr;
+                padding: 15px 5% 60px;
+            }
+        }
+        @media (max-width: 480px) {
+            .page-header h1 { font-size: 28px; }
+            .project-image { height: 160px; }
+        }
+    </style>
 </head>
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(205, 201, 201);
-    margin: 0;
-    padding: 20px;
-    background-image: url('images/background.png'); /* Path to your image */
-    background-size: cover; /* Cover the entire page */
-    background-position: center; /* Center the background image */
-    background-attachment: fixed;
-}
-.back-button {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    background-color: #ffffffcc;
-    color: #007bff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: color 0.3s ease;
-}
-
-.back-button::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background: #3d3b3c;
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    transition: 0.5s;
-}
-
-.back-button:hover::after {
-    width: 100%;
-}
-
-.back-button:hover {
-    color: #5d5255;
-}
-
-h1 {
-    color: #828080;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.project {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; /* Center the project box */
-    padding: 0; /* Allows the image to stretch to the edges */
-    margin-bottom: 20px;
-    max-width: 700px; /* Maximum width of the project box */
-    overflow: hidden; /* Ensures content fits within the borders */
-    max-height: 500px; /* Example max-height, adjust as needed */
-    display: flex;
-    flex-direction: column;
-}
-
-.project-image {
-    width: 100%; /* Full width of the container */
-    max-height: 250px; /* Adjust this value to reduce the image's height */
-    object-fit: cover; /* Ensures the image covers the area, might crop */
-    border-radius: 5px 5px 0 0; /* Rounds the top corners */
-}
-
-.project h2, .project p, .project a {
-    padding: 10px 20px; /* Adjusted padding for content */
-}
-
-.project h2 {
-    color: #333;
-    margin-top: 0;
-}
-
-.project p {
-    color: #666;
-    overflow: auto; /* Adds scroll to text if it exceeds the available space */
-}
-
-.project a {
-    color: #007bff;
-    text-decoration: none;
-    display: block; /* Makes the link a block element for better control */
-    width: fit-content; /* Adjusts the width to fit its content */
-    margin: 10px auto 10px; /* Centers the link and adds margin for spacing */
-}
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Creates two columns */
-    gap: 25px; /* Adjusts the space between the boxes */
-    justify-content: center; /* Centers the grid within the container */
-    margin: 0 auto; /* Additionally, centers the container horizontally */
-    max-width: 1300px; /* Adjust this value based on your preference */
-}
-
-.project {
-    /* Adjust the .project styles as needed, without specifying max-width or min-width */
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    width: 80%;
-    overflow: hidden;
-    padding: 20px; /* Adds padding inside the project boxes */
-}
-
-</style>
 <body>
-    <a href="index.html" class="back-button">&larr; Back to Home</a>
-    
-    <h1>My Projects</h1>
-    <div class="projects-container">
-        <div class="project">
-            <img src="images/othello.png" alt="Project 1 Image" class="project-image">
+
+<nav>
+    <a href="index.html">
+        <img src="images/logo.png" class="logo" alt="Logo">
+    </a>
+    <div class="hamburger" id="hamburger" role="button" tabindex="0" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+    </div>
+    <ul id="nav-menu">
+        <li><a href="index.html#header">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="projects.html">Projects</a></li>
+    </ul>
+</nav>
+
+<div class="page-header">
+    <h1>My <span>Projects</span></h1>
+    <p>A collection of things I've built and worked on</p>
+</div>
+
+<div class="projects-container">
+    <div class="project">
+        <img src="images/othello.png" alt="Othello AI" class="project-image">
+        <div class="project-body">
             <h2>Othello AI</h2>
-            <p>Othello Human-AI chess game made with QT in C++, utilizing heuristic analysis, minimax, and AB-pruning algorithms</p>
-            <a href="https://github.com/GaryZhous/Othello">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/webmap.png" alt="Project 2 Image" class="project-image">
-            <h2>GHG Platform</h2>
-            <p>Online interactive map made using Mapbox.js and D3.js for documenting the greenhouse gass emission and energy consumption across the entire city of Toronto</p>
-            <a href="https://samarqureshii.github.io/GHGplatform/index.html">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/RAPID_System.png" alt="Project 3 Image" class="project-image">
-            <h2>PAPID System</h2>
-            <p>A multi-modal device approach to managing remote patient monitoring (RPM) using off the shelf pager hardware with optical AI to synchronize patient care.</p>
-            <a href="https://github.com/GaryZhous/MakeUofT">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/geoquester.png" alt="Project 4 Image" class="project-image">
-            <h2>GeoQuester</h2>
-            <p>GIS application made in C++ with GTK libraries. Implementing A* algorithms for path finding</p>
-            <a href="https://github.com/GaryZhous/GeoCacher">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/overview.png" alt="Project 5 Image" class="project-image">
-            <h2>AI Chat App</h2>
-            <p>Android AI Chat App that makes use of IBM Watsonx's AI models</p>
-            <a href="https://gitlab.com/garyzhouprojects/AndroidApp">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/goose.png" alt="Project 6 Image" class="project-image">
-            <h2>Goose</h2>
-            <p>Block's open-source AI Agent, counterpart of Claude Desktop but way cooler :). I mainly contributed to its CLI.</p>
-            <a href="https://github.com/block/goose">View Project</a>
+            <p>Othello Human-AI chess game made with QT in C++, utilizing heuristic analysis, minimax, and AB-pruning algorithms.</p>
+            <a href="https://github.com/GaryZhous/Othello" target="_blank" rel="noopener" class="project-link">
+                View Project <i class="fa fa-external-link"></i>
+            </a>
         </div>
     </div>
+
+    <div class="project">
+        <img src="images/webmap.png" alt="GHG Platform" class="project-image">
+        <div class="project-body">
+            <h2>GHG Platform</h2>
+            <p>Online interactive map made using Mapbox.js and D3.js for documenting the greenhouse gas emission and energy consumption across the entire city of Toronto.</p>
+            <a href="https://samarqureshii.github.io/GHGplatform/index.html" target="_blank" rel="noopener" class="project-link">
+                View Project <i class="fa fa-external-link"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="project">
+        <img src="images/RAPID_System.png" alt="RAPID System" class="project-image">
+        <div class="project-body">
+            <h2>RAPID System</h2>
+            <p>A multi-modal device approach to managing remote patient monitoring (RPM) using off-the-shelf pager hardware with optical AI to synchronize patient care.</p>
+            <a href="https://github.com/GaryZhous/MakeUofT" target="_blank" rel="noopener" class="project-link">
+                View Project <i class="fa fa-external-link"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="project">
+        <img src="images/geoquester.png" alt="GeoQuester" class="project-image">
+        <div class="project-body">
+            <h2>GeoQuester</h2>
+            <p>GIS application made in C++ with GTK libraries, implementing A* algorithms for path finding.</p>
+            <a href="https://github.com/GaryZhous/GeoCacher" target="_blank" rel="noopener" class="project-link">
+                View Project <i class="fa fa-external-link"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="project">
+        <img src="images/overview.png" alt="AI Chat App" class="project-image">
+        <div class="project-body">
+            <h2>AI Chat App</h2>
+            <p>Android AI Chat App that makes use of IBM Watsonx's AI models.</p>
+            <a href="https://gitlab.com/garyzhouprojects/AndroidApp" target="_blank" rel="noopener" class="project-link">
+                View Project <i class="fa fa-external-link"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="project">
+        <img src="images/goose.png" alt="Goose" class="project-image">
+        <div class="project-body">
+            <h2>Goose</h2>
+            <p>Block's open-source AI Agent, counterpart of Claude Desktop but way cooler. I mainly contributed to its CLI.</p>
+            <a href="https://github.com/block/goose" target="_blank" rel="noopener" class="project-link">
+                View Project <i class="fa fa-external-link"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Copyright &copy; Gary Zhou. <i class="fa fa-heart"></i></p>
+</div>
+
+<script>
+    var hamburger = document.getElementById("hamburger");
+    var navMenu = document.getElementById("nav-menu");
+    hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("open");
+        navMenu.classList.toggle("open");
+    });
+    hamburger.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            hamburger.classList.toggle("open");
+            navMenu.classList.toggle("open");
+        }
+    });
+    navMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            hamburger.classList.remove("open");
+            navMenu.classList.remove("open");
+        });
+    });
+</script>
 </body>
 </html>
