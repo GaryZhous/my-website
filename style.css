@@ -142,6 +142,12 @@ nav ul li a:hover::after {
 }
 .about-col-2 {
     flex-basis: 60%;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 0, 79, 0.06));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 .sub-title {
     font-size: 60px;
@@ -167,33 +173,47 @@ nav ul li a:hover::after {
     cursor: pointer;
     position: relative;
     color: #ababab;
-    transition: color 0.3s;
+    transition: color 0.3s, background 0.3s;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.02);
 }
 .tab-links:hover {
     color: #fff;
+    background: rgba(255, 255, 255, 0.08);
 }
 .tab-links::after {
     content: '';
     width: 0;
-    height: 3px;
+    height: 2px;
     background: #ff004f;
     position: absolute;
-    left: 0;
-    bottom: -8px;
+    left: 50%;
+    bottom: 2px;
+    transform: translateX(-50%);
     transition: 0.5s;
 }
 .tab-links.active-link {
     color: #fff;
+    background: rgba(255, 0, 79, 0.18);
+    border-color: rgba(255, 0, 79, 0.5);
 }
 .tab-links.active-link::after {
-    width: 50%;
+    width: calc(100% - 24px);
+}
+.about-tabs-panel {
+    position: relative;
+    min-height: 290px;
 }
 .tab-contents ul li {
     list-style: none;
     margin: 12px 0;
     font-size: 16px;
-    padding-left: 15px;
+    padding: 12px 14px 12px 15px;
     border-left: 3px solid #ff004f;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
 }
 .tab-contents ul li span {
     color: #b54769;
@@ -203,10 +223,20 @@ nav ul li a:hover::after {
     margin-bottom: 3px;
 }
 .tab-contents {
-    display: none;
+    display: block;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
 }
 .tab-contents.active-tab {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 
 /* -------- Contact -------- */
@@ -357,6 +387,9 @@ form .btn:hover {
         flex-basis: 100%;
         text-align: center;
     }
+    .about-col-2 {
+        padding: 24px 18px;
+    }
     .about-col-1 {
         margin-bottom: 20px;
     }
@@ -382,6 +415,9 @@ form .btn:hover {
     }
     .tab-contents ul li span {
         font-size: 16px;
+    }
+    .about-tabs-panel {
+        min-height: 360px;
     }
     .contact-left,
     .contact-right {
